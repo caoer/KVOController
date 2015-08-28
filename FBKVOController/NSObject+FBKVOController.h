@@ -20,4 +20,9 @@
 @property (nonatomic, strong) FBKVOController *KVOController;
 @property (nonatomic, strong) FBKVOController *KVOControllerNonRetaining;
 
+/**
+ *  call unobserveAll of KVOController and KVOControllerNonRetaining. It won't create KVOController
+ *  so it is safe to call in the dealloc method.
+ */
+- (void)fb_unobserveAll;
 @end

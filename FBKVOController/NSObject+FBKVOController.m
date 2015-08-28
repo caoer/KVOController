@@ -58,5 +58,12 @@ static void *NSObjectKVOControllerNonRetainingKey = &NSObjectKVOControllerNonRet
   objc_setAssociatedObject(self, NSObjectKVOControllerNonRetainingKey, KVOControllerNonRetaining, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+- (void)fb_unobserveAll {
+    FBKVOController *controllerNonRetaining = objc_getAssociatedObject(self, NSObjectKVOControllerNonRetainingKey);
+    [controllerNonRetaining unobserveAll];
+    
+    FBKVOController *controller = objc_getAssociatedObject(self, NSObjectKVOControllerKey);
+    [controller unobserveAll];
+}
 @end
 
